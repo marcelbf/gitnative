@@ -57,7 +57,7 @@ scrListings As screen:
                 PaddingRight: =16
                 PaddingTop: =16
                 Size: =16
-                Text: ="Contoso Real Estate Listing"
+                Text: ="Contoso Real Estate Listing 2"
                 ZIndex: =2
 
             "'Offline sync Icon1' As icon":

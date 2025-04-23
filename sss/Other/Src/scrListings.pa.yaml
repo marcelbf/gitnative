@@ -73,7 +73,7 @@ Screens:
                         PaddingRight: =16
                         PaddingTop: =16
                         Size: =16
-                        Text: ="Contoso Real Estate Listing"
+                        Text: ="Contoso Real Estate Listing 2"
                   - Offline sync Icon1:
                       Control: Classic/Icon@2.5.0
                       Properties:
