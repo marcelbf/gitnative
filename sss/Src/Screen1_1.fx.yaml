@@ -1,0 +1,328 @@
+Screen1_1 As screen:
+    ContentLanguage: =""
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+
+    conCalendar_1 As groupContainer.horizontalAutoLayoutContainer:
+        DropShadow: =DropShadow.Semibold
+        Height: =382
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =10
+        LayoutJustifyContent: =LayoutJustifyContent.Center
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =10
+        PaddingLeft: =10
+        PaddingRight: =10
+        PaddingTop: =10
+        RadiusBottomLeft: =20
+        RadiusBottomRight: =20
+        RadiusTopLeft: =20
+        RadiusTopRight: =20
+        Width: =504
+        X: =40
+        Y: =40
+        ZIndex: =1
+
+        conHeader_1 As groupContainer.horizontalAutoLayoutContainer:
+            FillPortions: =0
+            Height: =50
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutMinHeight: =77
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            ZIndex: =1
+
+            lblMonthYear_1 As label:
+                Align: =LayoutAlignItems.Center
+                AutoHeight: =true
+                BorderColor: =RGBA(0, 18, 107, 1)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                Color: =
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(161, 159, 157, 1)
+                FillPortions: =3
+                FocusedBorderColor: =lblMonthYear_1.BorderColor
+                FocusedBorderThickness: =5
+                Height: =72
+                HoverBorderColor: =lblMonthYear_1.BorderColor
+                HoverColor: =lblMonthYear_1.Color
+                HoverFill: =lblMonthYear_1.Fill
+                PressedBorderColor: =lblMonthYear_1.BorderColor
+                PressedColor: =lblMonthYear_1.Color
+                PressedFill: =lblMonthYear_1.Fill
+                Size: =20
+                TabIndex: =3
+                Text: =If(IsBlank(_firstDayOfMonth), Text(Today(),"[$-en-US]mmmm yyyy"),Text(_firstDayOfMonth,"[$-en-US]mmmm") & " " & Text(_firstDayOfMonth,"[$-en-US]yyyy"))
+                Width: =Parent.Width
+                Y: =40
+                ZIndex: =1
+
+            btnPrevMonth_1 As icon:
+                AccessibleLabel: ="Go Back"
+                BorderColor: =RGBA(166, 166, 166, 1)
+                Color: =Color.Black
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(220, 220, 220, 1)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                FocusedBorderColor: =btnPrevMonth_1.BorderColor
+                FocusedBorderThickness: =4
+                Height: |
+                    =Parent.Height - 10
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                Icon: =Icon.ArrowUp
+                LayoutMinWidth: =10
+                OnSelect: |
+                    =If(IsBlank(_firstDayOfMonth),        
+                        Set(_firstDayOfMonth, DateAdd(Today(), 1 - Day(Today()), TimeUnit.Days));    
+                        Set(_lastDayOfMonth, DateAdd(DateAdd(_firstDayOfMonth, 1, TimeUnit.Months), -1, TimeUnit.Days))
+                    );
+                    /*changes month view to previous month*/
+                    Set(_firstDayOfMonth, DateAdd(_firstDayOfMonth, -1, TimeUnit.Months));
+                    Set(_firstDayInView, DateAdd(_firstDayOfMonth, -(Weekday(_firstDayOfMonth) - 2 + 1), TimeUnit.Days));
+                    Set(_lastDayOfMonth, DateAdd(DateAdd(_firstDayOfMonth, 1, TimeUnit.Months), -1, TimeUnit.Days));
+                PaddingBottom: |
+                    =7
+                PaddingTop: =7 
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                TabIndex: =1
+                Width: |-
+                    =
+                    50  
+                X: =40
+                Y: =40
+                ZIndex: =2
+
+            btnNextMonth_1 As icon:
+                AccessibleLabel: ="Next Month"
+                BorderColor: =RGBA(166, 166, 166, 1)
+                Color: =Color.Black
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(220, 220, 220, 1)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                FocusedBorderColor: =btnNextMonth_1.BorderColor
+                FocusedBorderThickness: =4
+                Height: =btnPrevMonth_1.Height
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                OnSelect: |-
+                    =If(IsBlank(_firstDayOfMonth),        
+                        Set(_firstDayOfMonth, DateAdd(Today(), 1 - Day(Today()), TimeUnit.Days));    
+                        Set(_lastDayOfMonth, DateAdd(DateAdd(_firstDayOfMonth, 1, TimeUnit.Months), -1, TimeUnit.Days))
+                    );
+                    /*changes month view to next month*/
+                    Set(_firstDayOfMonth, DateAdd(_firstDayOfMonth, 1, TimeUnit.Months));
+                    Set(_firstDayInView, DateAdd(_firstDayOfMonth, -(Weekday(_firstDayOfMonth) - 2 + 1), TimeUnit.Days));
+                PaddingBottom: |
+                    =7
+                PaddingTop: =7
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                TabIndex: =2
+                Width: =50  
+                X: =Parent.Width-btnNextMonth_1.Width
+                Y: =40
+                ZIndex: =3
+
+        conDates_1 As groupContainer.horizontalAutoLayoutContainer:
+            Height: =75
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            ZIndex: =2
+
+            conWeekDays_1 As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                FillPortions: =0
+                Height: =40
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutGap: =10
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                ZIndex: =1
+
+                "galWeekDays_1 As gallery.'BrowseLayout_Horizontal_TwoTextOneImageVariant_ver5.0'":
+                    '#CopilotOverlayLabel': ="Filtered"
+                    AlignInContainer: =AlignInContainer.Center
+                    BorderColor: =RGBA(245, 245, 245, 1)
+                    DelayItemLoading: =true
+                    DisplayMode: =DisplayMode.View
+                    Height: =23
+                    Items: |-
+                        =[DateAdd(Today(),
+                                 -(Weekday(Today(),StartOfWeek.Monday)),
+                                 TimeUnit.Days
+                        ),DateAdd(Today(),
+                                -(Weekday(Today(),StartOfWeek.Monday)) + 1,
+                                TimeUnit.Days
+                        ),DateAdd(Today(),
+                                -(Weekday(Today(),StartOfWeek.Monday)) + 2,
+                                TimeUnit.Days
+                        ),DateAdd(Today(),
+                                -(Weekday(Today(),StartOfWeek.Monday)) + 3,
+                                TimeUnit.Days
+                        ),DateAdd(Today(),
+                                -(Weekday(Today(),StartOfWeek.Monday)) + 4,
+                                TimeUnit.Days
+                        ),DateAdd(Today(),
+                                -(Weekday(Today(),StartOfWeek.Monday)) + 5,
+                                TimeUnit.Days
+                        ),DateAdd(Today(),
+                                -(Weekday(Today(),StartOfWeek.Monday)) + 6,
+                                TimeUnit.Days
+                        )]
+                    LayoutMinHeight: =23
+                    LayoutMinWidth: =320
+                    LoadingSpinner: =LoadingSpinner.Data
+                    ShowScrollbar: =false
+                    TemplatePadding: =0
+                    TemplateSize: =Parent.Width /7
+                    Width: =242
+                    ZIndex: =1
+
+                    txtWeekDays_1 As Text:
+                        Align: ='TextCanvas.Align'.End
+                        AutoHeight: =true
+                        BorderStyle: =""
+                        ContentLanguage: =""
+                        DisplayMode: =DisplayMode.Edit
+                        Font: =""
+                        FontItalic: =false
+                        FontStrikethrough: =false
+                        FontUnderline: =false
+                        Height: =23
+                        Size: =14
+                        TabIndex: =0
+                        Text: =Text(ThisItem.Value,"ddd")
+                        Tooltip: =""
+                        VerticalAlign: =VerticalAlign.Middle
+                        Visible: =true
+                        Weight: ='TextCanvas.Weight'.Semibold
+                        Width: =40    
+                        Wrap: =true
+                        X: =0
+                        Y: =0
+                        ZIndex: =1
+
+            conMonthDays_1 As groupContainer.horizontalAutoLayoutContainer:
+                AlignInContainer: =AlignInContainer.SetByContainer
+                Height: =40
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutGap: =10
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMinHeight: =100
+                LayoutMinWidth: =250
+                LayoutMode: =LayoutMode.Auto
+                LayoutOverflowX: =LayoutOverflow.Scroll
+                LayoutOverflowY: =LayoutOverflow.Scroll
+                RadiusBottomLeft: =4
+                RadiusBottomRight: =4
+                RadiusTopLeft: =4
+                RadiusTopRight: =4
+                ZIndex: =2
+
+                galDays_1 As gallery.galleryVertical:
+                    '#CopilotOverlayLabel': ="Filtered"
+                    AlignInContainer: =AlignInContainer.Center
+                    BorderColor: =RGBA(245, 245, 245, 1)
+                    DelayItemLoading: =true
+                    Height: =Parent.Height-10    
+                    Items: =[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19, 20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41]
+                    Layout: =Layout.Vertical
+                    LayoutMinHeight: =10
+                    LayoutMinWidth: =320
+                    LoadingSpinner: =LoadingSpinner.Data
+                    ShowScrollbar: =false
+                    TemplatePadding: =0
+                    TemplateSize: =Parent.Height / 7
+                    Width: =50
+                    WrapCount: =7
+                    ZIndex: =1
+
+                    lblDay_1 As label:
+                        Align: =Align.Center
+                        BorderColor: =RGBA(0, 0, 0, 0)
+                        BorderStyle: =BorderStyle.None
+                        BorderThickness: =2
+                        Color: |-
+                            =If(
+                                DateAdd(If(IsBlank(_firstDayInView),
+                                        DateAdd(Today(), 1 - Day(Today()), TimeUnit.Days),
+                                        _firstDayInView
+                                    ), ThisItem.Value
+                                ) = _selectedDate    
+                                ,Color.Red
+                                , Color.Black)
+                        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                        DisabledColor: =RGBA(161, 159, 157, 1)
+                        Fill: |-
+                            =/*Fill value changes if the gallery item day = today, or if it lies outside of the current month*/             
+                            If(
+                                /*Date selected is today*/
+                                DateAdd(_firstDayInView, ThisItem.Value) = Today() && DateAdd(_firstDayInView, ThisItem.Value) = _selectedDate, RGBA(0,0,0,0),
+                                /*The day is outside the range of the currently selected month*/
+                                Abs(Self.Text - ThisItem.Value) > 10,RGBA(200, 200, 200, 0.3), RGBA(0, 0, 0, 0))
+                        FocusedBorderThickness: =4
+                        Font: =Font.'Segoe UI'
+                        FontWeight: |-
+                            =If(
+                                DateAdd(If(IsBlank(_firstDayInView),
+                                        DateAdd(Today(), 1 - Day(Today()), TimeUnit.Days),
+                                        _firstDayInView
+                                    ), ThisItem.Value
+                                ) = _selectedDate    
+                                ,FontWeight.Bold
+                                , FontWeight.Normal
+                            )
+                        Height: =Parent.Height/6 -10
+                        OnSelect: |-
+                            =Set(_selectedDate, DateAdd(
+                                If(IsBlank(_firstDayInView),
+                                    DateAdd(Today(), 1 - Day(Today()), TimeUnit.Days),
+                                    _firstDayInView
+                                ), 
+                                ThisItem.Value, TimeUnit.Days));
+                        Size: =15
+                        Text: |-
+                            =If(IsBlank(_firstDayInView),
+                                With(
+                                {        
+                                    loc_firstDayOfMonth: DateAdd(Today(), 1 - Day(Today()), TimeUnit.Days)        
+                                },
+                                Day(DateAdd(DateAdd(loc_firstDayOfMonth,-(Weekday(loc_firstDayOfMonth)-2+1),TimeUnit.Days),ThisItem.Value,TimeUnit.Days))),
+                                Day(DateAdd(_firstDayInView,ThisItem.Value,TimeUnit.Days)))
+                        VerticalAlign: =VerticalAlign.Top
+                        Width: =Parent.Width / 7 
+                        Wrap: =false
+                        ZIndex: =1
+

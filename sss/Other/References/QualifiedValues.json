@@ -1,0 +1,19 @@
+{
+  "QualifiedValues": [
+    {
+      "Kind": "default.cds_contoso_listing_forms",
+      "Namespace": "Listings (Forms)",
+      "Values": {
+        "Information": "8c112486-d044-4e9b-9f8d-de2c6d10c014",
+        "Listing": "530bff54-7d3d-ef11-8409-0022480bc9e8"
+      }
+    },
+    {
+      "Kind": "default.cds_contoso_listingimage_forms",
+      "Namespace": "Listing Images (Forms)",
+      "Values": {
+        "Information": "4ed00543-765e-4b97-808e-83402f681e0a"
+      }
+    }
+  ]
+}

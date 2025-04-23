@@ -1,0 +1,141 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "contoso_listings",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "contoso_listing",
+    "MaxGetRowsCount": 500,
+    "Name": "Listings",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "contoso_address": "Address",
+      "contoso_description": "Description",
+      "contoso_displayname": "Display Name",
+      "contoso_features": "Features",
+      "contoso_image": "Image",
+      "contoso_imageid": "contoso_ImageId",
+      "contoso_listing_AsyncOperations": "System Jobs",
+      "contoso_listing_BulkDeleteFailures": "Bulk Delete Failures",
+      "contoso_listing_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "contoso_listing_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "contoso_listing_ProcessSession": "Process Sessions",
+      "contoso_listing_SyncErrors": "Sync Errors",
+      "contoso_listingfee_listing": "Listing Fees",
+      "contoso_listingid": "Listing",
+      "contoso_listingid1": "Listing ID",
+      "contoso_listingimage_listing": "Listing Images",
+      "contoso_lock": "Lock",
+      "contoso_maximumguests": "Maximum Guests",
+      "contoso_name": "Name",
+      "contoso_numberofbathrooms": "Number of Bathrooms",
+      "contoso_numberofbedrooms": "Number of Bedrooms",
+      "contoso_pricepermonth": "Price per Month",
+      "contoso_pricepermonth_base": "Price per Month (Base)",
+      "contoso_PrimaryImage": "Primary Image",
+      "contoso_reservation_listing": "Listing Reservations",
+      "contoso_summary": "Summary",
+      "contoso_totalparkingspaces": "Total Parking Spaces",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "exchangerate": "Exchange Rate",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "transactioncurrencyid": "Currency",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Listings",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Listings (Views)",
+    "Name": "_contoso_listing_views",
+    "RelatedEntityName": "Listings",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "191ea5bf-1ff9-ee11-a1fe-6045bd05a326": "Portal Listings",
+      "4f7d9b29-6c71-4d84-9d7d-74fa489b0025": "Listing Associated View",
+      "7fc05175-98dd-4c77-b2ad-fa01913565e6": "Listing Advanced Find View",
+      "d73f94ed-98a2-4441-a29e-97495594a8a3": "Active Listings",
+      "de51db4e-e17c-4b8b-b00e-dc4c9c090ade": "Listing Lookup View",
+      "f6ec5747-bd12-4035-b8c9-4fca4b2cc567": "Inactive Listings"
+    }
+  },
+  {
+    "DisplayName": "Features (Listings)",
+    "Name": "contoso_listing_contoso_features",
+    "OptionSetInfoNameMapping": {
+      "330650000": "Parking",
+      "330650001": "Washing Machine",
+      "330650002": "Pool",
+      "330650003": "Garden",
+      "330650004": "Gym",
+      "330650005": "Security"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "contoso_features",
+        "OptionSetReferenceEntityName": "Listings"
+      }
+    },
+    "OptionSetTypeKey": "MultiSelectPicklistType",
+    "RelatedColumnInvariantName": "contoso_features",
+    "RelatedEntityName": "Listings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status (Listings)",
+    "Name": "contoso_listing_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Listings"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Listings",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Listings)",
+    "Name": "contoso_listing_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Listings"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Listings",
+    "Type": "OptionSetInfo"
+  }
+]

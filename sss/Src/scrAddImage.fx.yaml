@@ -1,0 +1,184 @@
+scrAddImage As screen:
+    ContentLanguage: =""
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnVisible: =Reset(AddMediaButton1)
+
+    conDialogRoot As groupContainer.horizontalAutoLayoutContainer:
+        DropShadow: =DropShadow.Semibold
+        Height: =App.Height * 0.8
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =16
+        LayoutMode: =LayoutMode.Auto
+        PaddingBottom: =16
+        PaddingLeft: =16
+        PaddingRight: =16
+        PaddingTop: =16
+        RadiusBottomLeft: =4
+        RadiusBottomRight: =4
+        RadiusTopLeft: =4
+        RadiusTopRight: =4
+        Width: =App.Width * 0.8
+        X: =Parent.Width/2-(Self.Width/2)
+        Y: =Parent.Height/2-(Self.Height/2)
+        ZIndex: =1
+
+        conUploadImage As groupContainer.manualLayoutContainer:
+            DropShadow: =DropShadow.Light
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            ZIndex: =1
+
+            UploadedImage1 As image:
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderThickness: =2
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                FocusedBorderThickness: =4
+                Height: =Parent.Height
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverFill: =RGBA(0, 0, 0, 0)
+                Image: =If(IsBlank(AddMediaButton1.Media), SampleImage, AddMediaButton1.Media)
+                ImagePosition: =ImagePosition.Fill
+                PressedBorderColor: =RGBA(0, 0, 0, 0)
+                PressedFill: =RGBA(0, 0, 0, 0)
+                Width: =Parent.Width
+                X: =AddMediaButton1.X
+                Y: =AddMediaButton1.Y
+                ZIndex: =1
+
+            AddMediaButton1 As addMedia:
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                ChangePictureText: ="Change Image"
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(161, 159, 157, 1)
+                DisabledFill: =RGBA(242, 242, 241, 0)
+                Fill: =RGBA(0, 120, 212, 1)
+                FocusedBorderThickness: =4
+                Font: =Font.'Segoe UI'
+                Height: =Parent.Height
+                HoverBorderColor: =RGBA(0, 0, 0, 0)
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =RGBA(16, 110, 190, 1)
+                PlaceholderText: ="Tap or click to add a picture"
+                PressedBorderColor: =RGBA(0, 69, 120, 1)
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =RGBA(16, 110, 190, 1)
+                Size: =12
+                Text: ="Select Image"
+                Width: =Parent.Width
+                ZIndex: =2
+
+        conDialogButtons As groupContainer.horizontalAutoLayoutContainer:
+            DropShadow: =DropShadow.Light
+            FillPortions: =0
+            Height: =46
+            LayoutGap: =16
+            LayoutJustifyContent: =LayoutJustifyContent.End
+            LayoutMinHeight: =100
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            PaddingBottom: =8
+            PaddingLeft: =8
+            PaddingRight: =8
+            PaddingTop: =8
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            ZIndex: =2
+
+            cmdCancel As Button:
+                AcceptsFocus: =true
+                AccessibleLabel: =""
+                Align: =""
+                Appearance: ='ButtonCanvas.Appearance'.Outline
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =DisplayMode.Edit
+                Font: =""
+                FontItalic: =false
+                FontSize: =0
+                FontStrikethrough: =false
+                FontUnderline: =false
+                FontWeight: =""
+                Height: =32
+                Icon: =""
+                IconRotation: =0
+                IconStyle: ="Outline"
+                Layout: ="Icon before"
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                OnSelect: |-
+                    =
+                    Navigate(scrListings);
+                TabIndex: =0
+                Text: ="Cancel"
+                Tooltip: =""
+                VerticalAlign: =""
+                Visible: =true
+                Width: =96
+                X: =225
+                Y: =80
+                ZIndex: =1
+
+            cmdAddImage As Button:
+                AcceptsFocus: =true
+                AccessibleLabel: =""
+                Align: =""
+                Appearance: ="Primary"
+                BorderStyle: =""
+                ContentLanguage: =""
+                DisplayMode: =If((SampleImage in UploadedImage1.Image),DisplayMode.Disabled,DisplayMode.Edit)
+                Font: =""
+                FontItalic: =false
+                FontSize: =0
+                FontStrikethrough: =false
+                FontUnderline: =false
+                FontWeight: =""
+                Height: =32
+                Icon: =""
+                IconRotation: =0
+                IconStyle: ="Outline"
+                Layout: ="Icon before"
+                LayoutMinHeight: =32
+                LayoutMinWidth: =96
+                OnSelect: |-
+                    =With(
+                        {newImage:Patch('Listing Images',
+                        Defaults('Listing Images'),
+                        {
+                            Listing:RecordsGallery1.Selected,
+                            Name:AddMediaButton1.FileName,
+                            Image: UploadedImage1.Image
+                        }
+                        )
+                        }
+                        ,
+                    
+                        // If there is only one Image, then set it as the default
+                        If(CountRows(Filter('Listing Images',Listing.Listing = RecordsGallery1.Selected.Listing))=1,
+                            Patch(
+                                Listings,RecordsGallery1.Selected,
+                                {
+                                    'Primary Image':newImage
+                                }
+                            );
+                        )
+                    );
+                    Navigate(scrListings)
+                TabIndex: =0
+                Text: ="Ok"
+                Tooltip: =""
+                VerticalAlign: =""
+                Visible: =true
+                Width: =96
+                X: =80
+                Y: =80
+                ZIndex: =2
+

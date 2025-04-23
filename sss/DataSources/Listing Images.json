@@ -1,0 +1,106 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "contoso_listingimages",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "contoso_listingimage",
+    "MaxGetRowsCount": 500,
+    "Name": "Listing Images",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "{Attachments}": "Attachments",
+      "contoso_contoso_listingimage": "Listings",
+      "contoso_image": "Image",
+      "contoso_imageid": "contoso_ImageId",
+      "contoso_Listing": "Listing",
+      "contoso_listingimage_Annotations": "Notes",
+      "contoso_listingimage_AsyncOperations": "System Jobs",
+      "contoso_listingimage_BulkDeleteFailures": "Bulk Delete Failures",
+      "contoso_listingimage_DuplicateBaseRecord": "Duplicate Records (contoso_listingimage_DuplicateBaseRecord)",
+      "contoso_listingimage_DuplicateMatchingRecord": "Duplicate Records (contoso_listingimage_DuplicateMatchingRecord)",
+      "contoso_listingimage_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "contoso_listingimage_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "contoso_listingimage_ProcessSession": "Process Sessions",
+      "contoso_listingimage_SyncErrors": "Sync Errors",
+      "contoso_listingimageid": "Listing Image",
+      "contoso_name": "Name",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "Listing Images",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Listing Images (Views)",
+    "Name": "_contoso_listingimage_views",
+    "RelatedEntityName": "Listing Images",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "27efd78b-fede-4de1-beae-56cad971c39c": "Listing Image Associated View",
+      "5a3d458a-548c-4386-94b9-8a694f1d294f": "Listing Image Lookup View",
+      "5daa40ed-a6df-4062-89d9-4782c0c0bb14": "Active Listing Images",
+      "6cc83970-1d04-ef11-9f89-0022480c5a42": "Active Listing Images (inc. Image)",
+      "6ed9dafb-affa-ee11-a1fe-6045bd05a326": "Listing Images Slider",
+      "ab7977b0-290f-435f-8afa-59af37221ef1": "Listing Image Advanced Find View",
+      "ceef7cc8-25f9-ee11-a1fe-6045bd05a326": "Portal Listing Images",
+      "ea10c467-448f-4189-b829-3378872dd2c5": "Inactive Listing Images"
+    }
+  },
+  {
+    "DisplayName": "Status (Listing Images)",
+    "Name": "contoso_listingimage_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "Listing Images"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "Listing Images",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (Listing Images)",
+    "Name": "contoso_listingimage_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "Listing Images"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "Listing Images",
+    "Type": "OptionSetInfo"
+  }
+]

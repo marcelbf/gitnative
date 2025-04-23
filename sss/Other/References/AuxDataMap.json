@@ -1,0 +1,3 @@
+{
+  "AppFromDataMetaDataIdsToEntityNameMappings": "{\"%DataSourceName.AFD%\":\"Listings\",\"%DataSourceValue.AFD%\":\"[@Listings]\",\"%SortFieldName.AFD%\":\"\\\"contoso_address\\\"\",\"%FilterFieldName.AFD%\":\"contoso_address\",\"%PrimaryNameField.AFD%\":\"\\\"contoso_name\\\"\",\"%PrimaryNameFieldDisplayName.AFD%\":\"'Name'\",\"%SearchFieldName.AFD%\":\"\\\"contoso_address\\\",\\\"contoso_description\\\",\\\"contoso_displayname\\\"\",\"%StartsWithFieldName.AFD%\":\"contoso_address\",\"%DeleteConfirmFieldName.AFD%\":\"contoso_address\",\"%SortDescending.AFD%\":\"SortDescending1\",\"%CopilotSinglePageScreen.ID%\":\"MainScreen1\",\"%BrowseContainer.ID%\":\"BrowseGallery1\",\"%DetailEditContainer.ID%\":\"EditForm1\"}"
+}
