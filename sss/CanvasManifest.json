@@ -141,7 +141,6 @@
     "UserLocale": "en-US"
   },
   "ScreenOrder": [
-    "Screen1",
     "Welcome",
     "scrAddImage",
     "scrListings",

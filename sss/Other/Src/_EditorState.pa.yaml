@@ -8,7 +8,6 @@
 # ************************************************************************************************
 EditorState:
   ScreensOrder:
-    - Screen1
     - Welcome
     - scrAddImage
     - scrListings
